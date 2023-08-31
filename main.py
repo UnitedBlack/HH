@@ -1,19 +1,34 @@
+import requests
+import lxml
+from bs4 import BeautifulSoup as bs
+import re
+from forhttp import cookies, headers, params
 
-# import requests
-# import lxml
-# from bs4 import BeautifulSoup as bs
+vacancy = []
 
-# response = requests.get('https://hh.ru/search/vacancy',
-#                         params=params, cookies=cookies, headers=headers)  # Делает хттп запрос на сайт хх
+response = requests.get('https://hh.ru/search/vacancy',
+                        params=params, cookies=cookies, headers=headers)
 
-# with open("RequestResult.html", "w", encoding="utf-8") as file:
-#     file.write(response.text)  # Конвертирует полученный запрос в html файл RequestResult.html в папке найдешь
+with open("RequestResult.html", "w", encoding="utf-8") as file:
+    file.write(response.text)
 
-# soup = bs(response.content, 'html.parser')  # переопределение для работы с библиотекой soup, 
-# # эта библиотека позволяет парсить хтмл который мы скачали и сохранили на предыдущей строке
 
-# title = soup.find_all('a', class_="serp-item__title") # парсит каждый блок с вакансией 
-# respond_button = soup.find_all(
-#     class_="bloko-button bloko-button_kind-success bloko-button_scale-small").find("span")
-# # парсит кнопки "откликнуться" в каждом блоке вакансий
-# print(respond_button)
+soup = bs(response.content, 'html.parser')
+
+
+title = soup.find_all('a', class_="serp-item__title")
+
+for string in title:
+    current_string = string.text
+    if current_string:
+        regexp = re.search(r"(Python|python|junior python|Junior Python|junior Python|Junior python)", current_string)
+        print(regexp)
+
+get_respond_button = soup.find_all(
+    class_="bloko-button bloko-button_kind-success bloko-button_scale-small")
+
+
+# for respond_button in get_respond_button:
+#     vacancy.append(respond_button.get("href"))
+
+# print(vacancy)
