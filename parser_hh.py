@@ -62,7 +62,7 @@ params = {
 response = requests.get('https://hh.ru/search/vacancy',
                         params=params, cookies=cookies, headers=headers)
 
-with open("RequestResult.html", "w") as file:
+with open("RequestResult.html", "w", encoding="utf-8") as file:
     file.write(response.text)
 
 soup = bs(response.content, 'html.parser')
