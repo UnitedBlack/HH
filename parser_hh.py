@@ -1,6 +1,7 @@
 import requests
 import lxml
 from bs4 import BeautifulSoup as bs
+import re
 
 import requests
 
@@ -63,3 +64,7 @@ response = requests.get('https://hh.ru/search/vacancy',
 
 with open("RequestResult.html", "w") as file:
     file.write(response.text)
+
+soup = bs(response.content, 'html.parser')
+beauty = soup.find('a', class_="serp-item__title")
+print(beauty)
