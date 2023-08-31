@@ -1,0 +1,1 @@
+This script automates your vacancies searching
