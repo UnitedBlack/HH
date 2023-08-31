@@ -66,5 +66,8 @@ with open("RequestResult.html", "w") as file:
     file.write(response.text)
 
 soup = bs(response.content, 'html.parser')
-beauty = soup.find('a', class_="serp-item__title")
-print(beauty)
+
+title = soup.find_all('a', class_="serp-item__title")
+respond_button = soup.find_all(
+    class_="bloko-button bloko-button_kind-success bloko-button_scale-small").find("span")
+print(respond_button)
