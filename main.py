@@ -3,10 +3,13 @@ import lxml
 from bs4 import BeautifulSoup as bs
 import re
 from forhttp import cookies, headers, params
+from lxml import etree
+from lxml import html
+
 
 vacancy = []
 
-for_searching = input("Введите вакансию для поиска: ")
+for_searching = "Python"
 text_string = params['text'] = for_searching
 
 
@@ -20,17 +23,32 @@ def getting_html():
 
 
 response = getting_html()
-soup = bs(response.content, 'html.parser')
 
-title = soup.find_all('a', class_="serp-item__title")
+html_string = response.text
+root = html.fromstring(html_string)
 
-for string in title:
-    current_string = string.text
-    print(current_string)
-    if current_string:
-        regexp = re.search(
-            r"(Python|python|junior python|Junior Python|junior Python|Junior python)", current_string)
-        print(regexp)
+parse = root.xpath(
+    '//main[@class="vacancy-serp-content"]//span[@data-page-analytics-event="vacancy_search_suitable_item"]//@href')
+
+for href in parse:
+    text_content = str(href)  # Получить текстовое содержимое текущего элемента
+    print(text_content)
+
+# # Выполняем XPath-запрос для получения значения элемента
+# value = root.xpath('/root/element1/text()')
+# print(value[0])  # Выводит "Value 1"
+
+# soup = bs(response.content, 'html.parser')
+
+# title = soup.find_all('a', class_="serp-item__title")
+
+# for string in title:
+#     current_string = string.text
+#     print(current_string)
+#     if current_string:
+#         regexp = re.search(
+#             r"(Python|python|junior python|Junior Python|junior Python|Junior python)", current_string)
+#         print(regexp)
 
 # get_respond_button = soup.find_all(
 #     class_="bloko-button bloko-button_kind-success bloko-button_scale-small")
