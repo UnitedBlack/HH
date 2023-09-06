@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 from forhttp import cookies, headers, params
+from lxml import etree
 
 # url = "https://hh.ru/search/vacancy?no_magic=true&L_save_area=true&text=&excluded_text=&professional_role=37&professional_role=170&professional_role=163&professional_role=68&industry=8&industry=43&industry=44&industry=49&industry=42&industry=41&industry=27&industry=39&industry=52&industry=7&industry=50&area=1&salary=&currency_code=RUR&experience=noExperience&employment=full&employment=part&employment=probation&schedule=fullDay&schedule=shift&schedule=flexible&order_by=relevance&search_period=0&items_on_page=50&page=0"
 
@@ -21,7 +22,12 @@ with open("index.html", encoding="utf-8") as file:
      src = file.read()
 
 soup = BeautifulSoup(src, "lxml")
-all_vacancies_hrefs = soup.find_all(class_="serp-item__title")
+htmlparser = etree.HTMLParser()
+tree = etree.parse(src, htmlparser)
+all_vacancies_hrefs = tree.xpath('//span[@data-page-analytics-event="vacancy_search_suitable_item"]//@href')
+# all_vacancies_hrefs = soup.find_all(class_="serp-item__title")
+
+print(all_vacancies_hrefs)
 
 for item in all_vacancies_hrefs:
      item_text = item.text

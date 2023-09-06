@@ -8,7 +8,6 @@ vacancy = []
 
 for_searching = input("Введите вакансию для поиска: ")
 text_string = params['text'] = for_searching
-print(text_string)
 
 
 def getting_html():
@@ -33,8 +32,8 @@ for string in title:
             r"(Python|python|junior python|Junior Python|junior Python|Junior python)", current_string)
         print(regexp)
 
-get_respond_button = soup.find_all(
-    class_="bloko-button bloko-button_kind-success bloko-button_scale-small")
+# get_respond_button = soup.find_all(
+#     class_="bloko-button bloko-button_kind-success bloko-button_scale-small")
 
 
 # Добавить отображение опыта
