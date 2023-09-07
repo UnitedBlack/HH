@@ -30,9 +30,9 @@ root = html.fromstring(html_string)
 parse = root.xpath(
     '//main[@class="vacancy-serp-content"]//span[@data-page-analytics-event="vacancy_search_suitable_item"]//@href')
 
-for href in parse:
+for i, href in enumerate(parse, start=1):
     text_content = str(href)  # Получить текстовое содержимое текущего элемента
-    print(text_content)
+    print(f'{i}: {text_content}')
 
 # # Выполняем XPath-запрос для получения значения элемента
 # value = root.xpath('/root/element1/text()')
