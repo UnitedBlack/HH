@@ -25,8 +25,9 @@ soup = BeautifulSoup(src, "lxml")
 xml_doc = src
 all_vacancies_hrefs = soup.find_all(class_="serp-item__title")
 # all_vacancies_hrefs = soup.select(".serp-item__title")
+# all_vacancies_hrefs = soup.find(class_="serp-item").find("span").find_all("a")
 
-
+all_vacancies_hrefs = soup.find_all(target="_blank")
 
 # print(all_vacancies_hrefs)
 print(len(all_vacancies_hrefs))
