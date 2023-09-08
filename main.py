@@ -1,12 +1,12 @@
-import                  requests
-import                  lxml
-from bs4 import         BeautifulSoup as bs
-import                  re
-from forhttp import     cookies
-from forhttp import     headers
-from forhttp import     params
-from lxml import        etree
-from lxml import        html
+import requests
+import lxml
+from bs4 import BeautifulSoup as bs
+import re
+from forhttp import cookies
+from forhttp import headers
+from forhttp import params
+from lxml import etree
+from lxml import html
 
 
 vacancy = []
@@ -19,7 +19,7 @@ def getting_html():
     response = requests.get('https://hh.ru/search/vacancy',
                             params=params, cookies=cookies, headers=headers)
 
-    with open("RequestResult.html", "w", encoding="utf-8") as file:
+    with open("index1.html", "w", encoding="utf-8") as file:
         file.write(response.text)
     return response
 
