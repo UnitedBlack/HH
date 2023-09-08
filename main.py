@@ -1,15 +1,17 @@
-import requests
-import lxml
-from bs4 import BeautifulSoup as bs
-import re
-from forhttp import cookies, headers, params
-from lxml import etree
-from lxml import html
+import                  requests
+import                  lxml
+from bs4 import         BeautifulSoup as bs
+import                  re
+from forhttp import     cookies
+from forhttp import     headers
+from forhttp import     params
+from lxml import        etree
+from lxml import        html
 
 
 vacancy = []
 
-for_searching = "Python"
+for_searching = "Маркетолог"
 text_string = params['text'] = for_searching
 
 

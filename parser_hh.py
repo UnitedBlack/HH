@@ -18,16 +18,16 @@ from lxml import etree
 # with open("index.html", "w", encoding="utf-8") as file:
 #     file.write(src)
 
-with open("index.html", encoding="utf-8") as file:
+with open("RequestResult.html", encoding="utf-8") as file:
     src = file.read()
 
 soup = BeautifulSoup(src, "lxml")
 xml_doc = src
-# all_vacancies_hrefs = soup.find_all(class_="serp-item__title")
+all_vacancies_hrefs = soup.find_all(class_="serp-item__title")
 # all_vacancies_hrefs = soup.select(".serp-item__title")
 # all_vacancies_hrefs = soup.find(class_="serp-item").find("span").find_all("a")
 
-all_vacancies_hrefs = soup.find_all('h3')
+# all_vacancies_hrefs = soup.find_all('h3')
 
 # print(all_vacancies_hrefs)
 print(len(all_vacancies_hrefs))
