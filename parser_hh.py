@@ -27,7 +27,11 @@ all_vacancies_hrefs = soup.find_all(class_="serp-item__title")
 # all_vacancies_hrefs = soup.select(".serp-item__title")
 # all_vacancies_hrefs = soup.find(class_="serp-item").find("span").find_all("a")
 
+<<<<<<< Updated upstream
 # all_vacancies_hrefs = soup.find_all('h3')
+=======
+# all_vacancies_hrefs = soup.find_all(class_="serp-item")
+>>>>>>> Stashed changes
 
 # print(all_vacancies_hrefs)
 print(len(all_vacancies_hrefs))
