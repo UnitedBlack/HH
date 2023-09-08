@@ -23,14 +23,16 @@ with open("index.html", encoding="utf-8") as file:
 
 soup = BeautifulSoup(src, "lxml")
 xml_doc = src
-# root = etree.fromstring(xml_doc)
-# all_vacancies_hrefs = root.xpath(
-#     '//span[@data-page-analytics-event="vacancy_search_suitable_item"]')
-all_vacancies_hrefs = soup.find_all(class_="serp-item__title")
+# all_vacancies_hrefs = soup.find_all(class_="serp-item__title")
+# all_vacancies_hrefs = soup.select(".serp-item__title")
+# all_vacancies_hrefs = soup.find(class_="serp-item").find("span").find_all("a")
 
-print(all_vacancies_hrefs)
+all_vacancies_hrefs = soup.find_all('h3')
 
-for i, item in enumerate(all_vacancies_hrefs):
-     item_text = item.text
-     item_href = item.get("href")
-     print(f"{i+1}. {item_text}: {item_href}") 
+# print(all_vacancies_hrefs)
+print(len(all_vacancies_hrefs))
+
+# for i, item in enumerate(all_vacancies_hrefs):
+#      item_text = item.text
+#      item_href = item.get("href")
+#      print(f"{i+1}. {item_text}: {item_href}")
