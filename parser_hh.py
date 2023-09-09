@@ -1,9 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
 from forhttp import cookies, headers, params
-from lxml import etree
-
-import requests
 
 vacancy = []
 

@@ -8,9 +8,6 @@ from forhttp import params
 from lxml import etree
 from lxml import html
 
-
-vacancy = []
-
 for_searching = "Маркетолог"
 text_string = params['text'] = for_searching
 
