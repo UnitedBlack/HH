@@ -1,0 +1,25 @@
+1694355926039	geckodriver	INFO	Listening on 127.0.0.1:37505
+1694355926046	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/hom ... te" "--remote-debugging-port" "52653" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile4N8aI4"
+XPCOMGlueLoad error for file /home/Black/.cache/selenium/firefox/linux64/117.0/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1694355944308	geckodriver	INFO	Listening on 127.0.0.1:59471
+1694355944311	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/hom ... te" "--remote-debugging-port" "44009" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile5yChmR"
+XPCOMGlueLoad error for file /home/Black/.cache/selenium/firefox/linux64/117.0/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1694355945929	geckodriver	INFO	Listening on 127.0.0.1:39731
+1694355945934	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/hom ... te" "--remote-debugging-port" "39667" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileWhK6u0"
+XPCOMGlueLoad error for file /home/Black/.cache/selenium/firefox/linux64/117.0/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1694355955371	geckodriver	INFO	Listening on 127.0.0.1:34169
+1694355955375	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/hom ... te" "--remote-debugging-port" "47133" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileaNdCjG"
+XPCOMGlueLoad error for file /home/Black/.cache/selenium/firefox/linux64/117.0/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1694355961860	geckodriver	INFO	Listening on 127.0.0.1:37661
+1694355961864	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/hom ... te" "--remote-debugging-port" "47927" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileUYeO6r"
+XPCOMGlueLoad error for file /home/Black/.cache/selenium/firefox/linux64/117.0/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
