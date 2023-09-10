@@ -1,0 +1,29 @@
+3. Navigating
+driver.get("http://www.google.com")
+<input type="text" name="passwd" id="passwd-id" />
+element = driver.find_element(By.ID, "passwd-id")
+element = driver.find_element(By.NAME, "passwd")
+element = driver.find_element(By.XPATH, "//input[@id='passwd-id']")
+element = driver.find_element(By.CSS_SELECTOR, "input#passwd-id")
+So, you’ve got an element. What can you do with it? First of all, you may want to enter some text into a text field:
+element.send_keys("some text")
+You can simulate pressing the arrow keys by using the “Keys” class:
+element.send_keys(" and some", Keys.ARROW_DOWN)
+element.clear()
+
+element = driver.find_element(By.XPATH, "//select[@name='name']")
+all_options = element.find_elements(By.TAG_NAME, "option")
+for option in all_options:
+    print("Value is: %s" % option.get_attribute("value"))
+    option.click()
+from selenium.webdriver.support.ui import Select
+select = Select(driver.find_element(By.NAME, 'name'))
+select.select_by_index(index)
+select.select_by_visible_text("text")
+select.select_by_value(value)
+
+select = Select(driver.find_element(By.ID, 'id'))
+select.deselect_all()
+
+select = Select(driver.find_element(By.XPATH, "//select[@name='name']"))
+all_selected_options = select.all_selected_options
