@@ -10,11 +10,10 @@ import re
 CYCLE_INDEX = 0
 driver = webdriver.Chrome()
 actions = ActionChains(driver)
-search_name = 'python'
 
 
 print("Loading page...")
-driver.get(f"https://hh.ru/search/vacancy?text={search_name}&salary=&ored_clusters=true&area=1")
+driver.get(f"https://hh.ru/search/vacancy?area=1&employment=full&employment=part&employment=probation&excluded_text=маркетплейсы+вайлдберис+озон+недвижимость+стройка&experience=noExperience&industry=7.541&industry=7.539&industry=11.459&industry=44.393&professional_role=170&professional_role=2&professional_role=3&professional_role=37&professional_role=163&professional_role=68&schedule=fullDay&schedule=shift&schedule=flexible&search_field=name&search_field=company_name&search_field=description&clusters=true&enable_snippets=true&no_magic=true&ored_clusters=true&order_by=salary_asc&page=0")
 
 try:
     next_page = driver.find_element(By.XPATH, "//a[@data-qa='pager-next']")
@@ -26,6 +25,7 @@ except (NoSuchElementException):
 
 def page_parser():
     global CYCLE_INDEX
+    results = []
     for cycle in next_page_button:
         vacancy_find_xpath = driver.find_elements(By.XPATH, "//a[@class='serp-item__title']")
         for vacancy_find in vacancy_find_xpath:
@@ -44,9 +44,14 @@ def page_parser():
                 vacancy_link_clean = re.sub('vologda\.', '', vacancy_link)
             except:
                 vacancy_link_clean = vacancy_link
-            print(f"{CYCLE_INDEX}. Вакансия: {vacancy_title}, ссылка: {vacancy_link_clean}")
+            result = (f"{CYCLE_INDEX}. Вакансия: {vacancy_title}, ссылка: {vacancy_link_clean}")
+            print(result)
+            results.append(result)
         actions.move_to_element(next_page).click(next_page).perform()
         WebDriverWait(driver, 10).until(EC.url_changes(driver.current_url))
+    with open('Parsed.txt', 'w', encoding="utf-8") as file:
+        for result in results:
+            file.write(result + '\n')
     return
 
 page_parser()
