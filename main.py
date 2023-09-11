@@ -44,8 +44,7 @@ def page_parser():
                 vacancy_link_clean = re.sub('vologda\.', '', vacancy_link)
             except:
                 vacancy_link_clean = vacancy_link
-            output = (
-                f"{CYCLE_INDEX}. {vacancy_title}, ссылка: {vacancy_link_clean}")
+            output = (f"{vacancy_title}, {vacancy_link_clean}")
             with open(f'Parsed-{time}.txt', 'a', encoding='utf-8') as file: file.write(output + "\n")
         actions.move_to_element(next_page).click(next_page).perform()
         WebDriverWait(driver, 10).until(EC.url_changes(driver.current_url))
