@@ -2,9 +2,9 @@ import requests
 import lxml
 from bs4 import BeautifulSoup as bs
 import re
-from forhttp import cookies
-from forhttp import headers
-from forhttp import params
+from Useless.forhttp import cookies
+from Useless.forhttp import headers
+from Useless.forhttp import params
 from lxml import etree
 from lxml import html
 
