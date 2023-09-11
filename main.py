@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
 from selenium.webdriver.chrome.options import Options
+import re
 
 CYCLE_INDEX = 0
 driver = webdriver.Chrome()
@@ -39,14 +40,16 @@ def page_parser():
             except (NoSuchElementException):
                 vacancy_link = WebDriverWait(driver, 10).until(EC.presence_of_element_located((
                     By.XPATH, "//a[@class='serp-item__title']"))).get_attribute("href")
-            print(f"{CYCLE_INDEX}. Вакансия: {vacancy_title}, ссылка: {vacancy_link}")
+            try:
+                vacancy_link_clean = re.sub('vologda\.', '', vacancy_link)
+            except:
+                vacancy_link_clean = vacancy_link
+            print(f"{CYCLE_INDEX}. Вакансия: {vacancy_title}, ссылка: {vacancy_link_clean}")
         actions.move_to_element(next_page).click(next_page).perform()
         WebDriverWait(driver, 10).until(EC.url_changes(driver.current_url))
     return
 
-
 page_parser()
-
 driver.quit()
 
 if __name__ == "__main__":
