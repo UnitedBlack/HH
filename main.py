@@ -51,8 +51,30 @@ def page_parser():
     return
 
 
-page_parser()
+def description_parser():
+    with open(f'Parsed-{time}.txt', 'r', encoding='utf-8') as file: current_url = file.read()
+    for elem in current_url:
+        reg_exp_vacancy = r'(\d+\.)\s(.*),\s(https?:\/\/\S*)'
+        match = re.match(reg_exp_vacancy, elem)
+
+        if match:
+            cycle, vacancy_name, response_url = match.groups()
+        # try:
+        #     description_find_xpath = driver.find_elements(
+        #         By.XPATH, "//*[@id='HH-React-Root']")
+        # except (NoSuchElementException):
+        #     vacancy_title = WebDriverWait(driver, 10).until(EC.presence_of_element_located((
+        #         By.XPATH, "//*[@id='HH-React-Root']"))).text
+
+
+
+
+
+
 driver.quit()
 
 if __name__ == "__main__":
-    pass
+    page_parser()
+    description_parser()
+
+    
