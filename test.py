@@ -24,7 +24,10 @@ def description_parser(name_re=vacancy_name_regexp, url_re=vacancy_url_regexp):
                 '//h1[@data-qa="vacancy-title"]/text()')
             vacancy_response_button_url = root.xpath(
                 "//a[@class='bloko-button bloko-button_kind-success bloko-button_scale-large bloko-button_stretched']/@href[1]")
-            print(vacancy_response_button_url)
+            # print(vacancy_response_button_url)
+            vacancy_company_name = root.xpath('//a[@data-qa="vacancy-company-name"]/span/text()')
+            print(vacancy_company_name)
+            vacancy_description = ""
 
 
 description_parser()
