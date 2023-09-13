@@ -1,37 +1,42 @@
 import re
-import re
-from datetime import datetime
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
+import requests
+from params import params, cookies, headers
+from lxml import html
 
-driver = webdriver.Chrome()
-actions = ActionChains(driver)
+# reg_exp_vacancy = r'(.*:\s)(https?:\/\/\S*)'
+vacancy_name_regexp = r"(\d+\.\s.*?),"
+vacancy_url_regexp = r"\s(https:\/\/[\w\/.?=-]+)"
 
-def description_parser():
-    with open('parserHH.txt', 'r', encoding='utf-8') as file:
-        for elem in file:
-            # print(line)
-            reg_exp_vacancy = r'(.*:\s)(https?:\/\/\S*)'
-            match = re.match(reg_exp_vacancy, elem)
-            if match:
-                vacancy_name, response_url = match.groups()
-                # print(response_url)
-            try:
-                driver.get(response_url)
-                description_find_xpath = driver.find_element(
-                    By.CLASS_NAME, "g-user-content").text
-                # description_get_element = description_find_xpath.get_attribute("div")
-            except (NoSuchElementException):
-                driver.get(response_url)
-                vacancy_title = WebDriverWait(driver, 10).until(EC.presence_of_element_located((
-                    By.CLASS_NAME, "g-user-content"))).text
-                # description_get_element = description_find_xpath.get_attribute("div")
-            print(description_find_xpath)
+
+def description_parser(name_re=vacancy_name_regexp, url_re=vacancy_url_regexp):
+    with open('Parsed-23-00.txt', 'r', encoding='utf-8') as file:
+        for current_vacancy in file:
+            regexped_name = re.search(name_re, current_vacancy).group()
+            regexped_url = re.search(url_re, current_vacancy).group()
+
+            print(regexped_name)
+            response = requests.get(regexped_url, params=params, cookies=cookies, headers=headers)
+
+            html_string = response.text
+            root = html.fromstring(html_string)
+
+            vacancy_main_title = root.xpath(
+                '//h1[@data-qa="vacancy-title"]/text()')
+            vacancy_response_button_url = root.xpath(
+                "//a[@class='bloko-button bloko-button_kind-success bloko-button_scale-large bloko-button_stretched']/@href[1]")
+            print(vacancy_response_button_url)
 
 
 description_parser()
 
+# try:
+#                 driver.get(response_url)
+#                 description_find_xpath = driver.find_element(
+#                     By.CLASS_NAME, "g-user-content").text
+#                 # description_get_element = description_find_xpath.get_attribute("div")
+#             except (NoSuchElementException):
+#                 driver.get(response_url)
+#                 vacancy_title = WebDriverWait(driver, 10).until(EC.presence_of_element_located((
+#                     By.CLASS_NAME, "g-user-content"))).text
+#                 # description_get_element = description_find_xpath.get_attribute("div")
+#             print(description_find_xpath)
